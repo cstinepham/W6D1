@@ -6,12 +6,11 @@ function sum(...args) {
   return sum;
 }
 
-function myBind(context, ...bindArgs) {
-  console.log(context);
+Function.prototype.myBind = function (context, ...bindArgs) {
   return (...callArgs) => {
     return this.apply(context, bindArgs.concat(callArgs));
   };
-}
+};
 
 class Cat {
   constructor(name) {
@@ -42,8 +41,8 @@ markov.says("meow", "Ned");
 // Markov says meow to Ned!
 // true
 
-pavlov.myBind(meow);
-pavlov.meow();
+// pavlov.myBind(meow());
+// pavlov.meow();
 
 // bind time args are "meow" and "Kush", no call time args
 markov.says.myBind(pavlov, "meow", "Kush")();
@@ -65,3 +64,29 @@ const notMarkovSays = markov.says.myBind(pavlov);
 notMarkovSays("meow", "me");
 // Pavlov says meow to me!
 // true
+
+function curriedSum(numArgs) {
+  let numbers = [];
+  let maxArgs = numArgs;
+  return function _curriedSum(arg) {
+    numbers.push(arg);
+    if (numbers.length < maxArgs) {
+      return _curriedSum;
+    } else {
+      return numbers.reduce((a, b) => (a + b));
+    }
+  };
+}
+
+Function.prototype.myCurry = function (numArgs) {
+  let args = [];
+  let thing = this;
+  return function _this(arg) {
+    args.push(arg);
+    if (args.length < numArgs) {
+      return _this;
+    } else {
+      return thing(args);
+    }
+  };
+};
