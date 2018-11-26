@@ -18,3 +18,11 @@
 .profile-picture {
   overflow: hidden;
 }
+
+.friends {
+  display: grid;
+}
+
+.thumb {
+  float: right;
+}
