@@ -1,8 +1,8 @@
 function MovingObject (options) {
-  this.pos = options[pos];
-  this.vel = options[vel];
-  this.radius = options[radius];
-  this.color = options[color];
+  this.pos = options.pos;
+  this.vel = options.vel;
+  this.radius = options.radius;
+  this.color = options.color;
 
 }
 
@@ -20,4 +20,16 @@ MovingObject.prototype.draw = function (ctx) {
   ctx.fill();
 };
 
+const mo = new MovingObject(
+  { pos: [30, 30], vel: [10, 10], radius: 5, color: "#00FF00"}
+);
+
 module.exports = MovingObject;
+
+// function baseConvertor(num, b) {
+//   let digits = '0123456789abcdef'.split('');
+//   if (num === 0) {
+//     return "";
+//   }
+//   return baseConvertor(Math.floor(num/b), b) + digits[num % b];
+// }

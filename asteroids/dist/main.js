@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nwindow.MovingObject = MovingObject;\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nwindow.MovingObject = MovingObject;\n\n  document.addEventListener(\"DOMContentLoaded\", function(event) {\n    console.log(\"DOM fully loaded and parsed\");\n    let canvas_element = document.getElementById(\"game-canvas\");\n    let ctx = canvas_element.getContext(\"2d\");\n    window.ctx = ctx;\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function MovingObject (options) {\n  this.pos = options[pos];\n  this.vel = options[vel];\n  this.radius = options[radius];\n  this.color = options[color];\n\n}\n\nMovingObject.prototype.draw = function (ctx) {\n  ctx.fillStyle = this.color;\n  ctx.beginPath();\n  ctx.arc(\n    this.pos[0],\n    this.pos[1],\n    this.radius,\n    0,\n    2 * Math.PI,\n    false\n  );\n  ctx.fill();\n};\n\nmodule.exports = MovingObject;\n\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("function MovingObject (options) {\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color;\n\n}\n\nMovingObject.prototype.draw = function (ctx) {\n  ctx.fillStyle = this.color;\n  ctx.beginPath();\n  ctx.arc(\n    this.pos[0],\n    this.pos[1],\n    this.radius,\n    0,\n    2 * Math.PI,\n    false\n  );\n  ctx.fill();\n};\n\nconst mo = new MovingObject(\n  { pos: [30, 30], vel: [10, 10], radius: 5, color: \"#00FF00\"}\n);\n\nmodule.exports = MovingObject;\n\n// function baseConvertor(num, b) {\n//   let digits = '0123456789abcdef'.split('');\n//   if (num === 0) {\n//     return \"\";\n//   }\n//   return baseConvertor(Math.floor(num/b), b) + digits[num % b];\n// }\n\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ })
 
