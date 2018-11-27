@@ -8,7 +8,6 @@ Function.prototype.inherits = function (superClass) {
   Surrogate.prototype = superClass.prototype;
   this.prototype = new Surrogate();
   this.prototype.constructor = this;
-  
 };
 
 function Cat(color) {
@@ -20,7 +19,7 @@ function Cat(color) {
 
 Cat.prototype.meow2 = function() {
   console.log('hi');
-}
+};
 
 function Kitten() {
 }
