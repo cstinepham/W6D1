@@ -86,7 +86,7 @@ Function.prototype.myCurry = function (numArgs) {
     if (args.length < numArgs) {
       return _this;
     } else {
-      return thing(args);
+      return thing.apply(null, [args]);
     }
   };
 };
